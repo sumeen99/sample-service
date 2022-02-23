@@ -80,16 +80,16 @@ podTemplate(
 
 			// Code Inspection
 			stage("Inspection Code") {
-				// container("scanner") {
-				// 	sh "sonar-scanner \
-				// 		-Dsonar.projectName=hellonode \
-				// 		-Dsonar.projectKey=hellonode \
-				// 		-Dsonar.sources=. \
-				// 		-Dsonar.inclusions=** \
-				// 		-Dsonar.language=javascript \
-				// 		-Dsonar.host.url=http://sonar.169.56.84.37.nip.io \
-				// 		-Dsonar.login=d08b8bde762cfc3ac15dba8aaaa2aa5e030752ad" 
-				// }
+				 container("scanner") {
+				 	sh "sonar-scanner \
+				 		-Dsonar.projectName=sample-service-dev \
+				 		-Dsonar.projectKey=sample-service-dev \
+				      -Dsonar.report.export.path=sonar-report.json \
+				 		-Dsonar.sources=src/main/java \
+				 		-Dsonar.language=java \
+				 		-Dsonar.host.url=http://169.56.71.185:32535/sonar \
+				 		-Dsonar.login=6a1db71e236ede9864c350dacac7e469d7a996db" 
+				 }
 			} 
 			        
 			// Build Docker, Push Image to Docker Hub Repository.        
