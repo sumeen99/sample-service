@@ -85,7 +85,7 @@ podTemplate(
 				 		-Dsonar.projectName=sample-service-dev \
 				 		-Dsonar.projectKey=sample-service-dev \
 				        -Dsonar.report.export.path=sonar-report.json \
-				 		-Dsonar.sources=${baseDir}/src/main \
+				 		-Dsonar.sources=${baseDir}/src/main/java \
 				 		-Dsonar.sourceEncoding=UTF-8 \
 				 		-Dsonar.java.binaries=${baseDir}/target/classes \
 				 		-Dsonar.language=java \
