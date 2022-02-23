@@ -85,10 +85,11 @@ podTemplate(
 				 		-Dsonar.projectName=sample-service-dev \
 				 		-Dsonar.projectKey=sample-service-dev \
 				        -Dsonar.report.export.path=sonar-report.json \
-				 		-Dsonar.sources=src/main \
+				 		-Dsonar.sources=${baseDir}/src/main \
 				 		-Dsonar.sourceEncoding=UTF-8 \
+				 		-Dsonar.java.binaries=${baseDir}/target/classes \
 				 		-Dsonar.language=java \
-				 		-Dsonar.host.url=http://169.56.71.185:32535/sonar \
+				 		-Dsonar.host.url=http://169.56.71.185:32535 \
 				 		-Dsonar.login=6a1db71e236ede9864c350dacac7e469d7a996db" 
 				 }
 			} 
