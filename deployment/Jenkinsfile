@@ -82,12 +82,13 @@ podTemplate(
 			stage("Inspection Code") {
 				 container("scanner") {
 				 	sh "sonar-scanner \
-				 		-Dsonar.projectName=sample-service-dev \
-				 		-Dsonar.projectKey=sample-service-dev \
+				 		-Dsonar.projectName=sample \
+				 		-Dsonar.projectKey=sample \
 				        -Dsonar.report.export.path=sonar-report.json \
-				 		-Dsonar.sources=${baseDir}/src/main/java \
+				 		-Dsonar.sources=src/main/java \
+				 		-Dsonar.projectBaseDir=${baseDir} \
 				 		-Dsonar.sourceEncoding=UTF-8 \
-				 		-Dsonar.java.binaries=${baseDir}/target/classes \
+				 		-Dsonar.java.binaries=target/classes \
 				 		-Dsonar.language=java \
 				 		-Dsonar.host.url=http://169.56.71.185:32535/sonar \
 				 		-Dsonar.login=6a1db71e236ede9864c350dacac7e469d7a996db" 
