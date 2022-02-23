@@ -23,10 +23,6 @@ podTemplate(
 	],
 	//volume mount
 	volumes: [
-		// hostPathVolume(hostPath: "/var/run/docker.sock", mountPath: "/var/run/docker.sock"),
-		// for normal server.
-		// hostPathVolume(hostPath: "/maven/.m2", mountPath: "/root/.m2")
-		// for kubernetes.
 		nfsVolume(mountPath: "/root/.m2", serverAddress: '169.56.71.180', serverPath: '/data/srv/nfs/.m2', readOnly: false)	
 	]
 ) 
@@ -35,11 +31,7 @@ podTemplate(
 	
 		// Git clone from Source Repository.
 		stage("Get Source") {
-			//git url:"https://github.com/happykube/hellonode.git", branch: "main", credentialsId: "git_credential"
-			// Javascript based on Node.js
-	 		//git branch: 'main', url: 'https://github.com/happykube/hellonode.git'
-			// Java based on Spring Boot, branch : msa
-			git branch: 'msa', url: 'https://gitlab.com/msa2021/sample-service.git'
+			git branch: 'msa', url: 'https://gitlab.com/nexweb/sample-service.git'
 		} 
 
 		//-- 환경변수 파일 읽어서 변수값 셋팅 
