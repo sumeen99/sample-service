@@ -116,7 +116,6 @@ podTemplate(
 
 				}
 			}
-			
             
 			// Delete Deployment from Cluster in Kubernetes
 			stage( "Clean Up Existing Deployments" ) {
