@@ -96,8 +96,6 @@ podTemplate(
 			} 
 
 			stage ("SonarQube Gatekeeper") {
-			     steps {
-			        script {
 			           STAGE_NAME = "SonarQube Gatekeeper"
 			
 			           if (BRANCH_NAME == "develop") {
@@ -109,8 +107,6 @@ podTemplate(
 			                 echo "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
 			              } 
 			           }
-			        }
-			     }	
 			  }
 			  	        
 			// Build Docker, Push Image to Docker Hub Repository.        
