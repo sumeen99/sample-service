@@ -92,7 +92,7 @@ podTemplate(
 				 		-Dsonar.language=java \
 				 		-Dsonar.host.url=http://169.56.71.185:32535/sonar \
 				 		-Dsonar.login=6a1db71e236ede9864c350dacac7e469d7a996db \
-				 		-Dsonar.webhooks.project=https://169.56.71.185:32060/sonarqube-webhook"
+				 		-Dsonar.webhooks.project=http://169.56.71.185:32060/sonarqube-webhook"
 				 
 				 }
 			} 
