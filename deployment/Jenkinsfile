@@ -97,7 +97,7 @@ podTemplate(
 			} 
 			
 	        stage('SonarQube Quality Gate'){
-	            steps{
+	
 	                timeout(time: 1, unit: 'MINUTES') {
 	                    script{
 	                        echo "Start~~~~"
@@ -107,7 +107,6 @@ podTemplate(
 	                        echo "End~~~~"
 	                    }
 	                }
-	            }
 	        }			
 			  	        
 			// Build Docker, Push Image to Docker Hub Repository.        
