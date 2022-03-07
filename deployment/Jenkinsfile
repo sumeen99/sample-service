@@ -104,6 +104,7 @@ podTemplate(
 				  }  else {
 				  		echo "Pipeline succeed due to quality gate success: ${qg.status}"
 				  }
+			  }
 			}
 			        
 			// Build Docker, Push Image to Docker Hub Repository.        
