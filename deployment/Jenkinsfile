@@ -119,7 +119,7 @@ podTemplate(
  
  			stage("Image Vulnerability Scanning") {
                 container("trivy"){
-                    sh "trivy image ${image}:latest"
+                    sh "trivy image ${image}:dev"
                 }
             }
                        
