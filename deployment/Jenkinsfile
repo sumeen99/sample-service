@@ -96,7 +96,7 @@ podTemplate(
 			} 
 			
 
-			stage("Quality Gate"){
+			stage("Quality Gate") {
 			   timeout(time: 1, unit: 'HOURS') {
 			      def qg = waitForQualityGate()
 				  if ('error'.equalsIgnoreCase(qg.status) ) {
@@ -145,7 +145,7 @@ podTemplate(
 			}
             echo "**** FINISH ALL STAGES : SUCCESS"
             echo "**** notifySlack"
-            //notifySlack("${currentBuild.currentResult}", "#00FF00")
+            notifySlack("${currentBuild.currentResult}", "#00FF00")
 		} catch(e) {
 			currentBuild.result = "FAILED"
 			//notifySlack("${currentBuild.currentResult}", "#FF0000")
