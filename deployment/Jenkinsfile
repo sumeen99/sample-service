@@ -116,12 +116,7 @@ podTemplate(
 
 				}
 			}
-
-            stage("Image Vulnerability Scanning") {
-                container("trivy"){
-                    sh "trivy image ${image}:dev"
-                }
-            }			
+			
             
 			// Delete Deployment from Cluster in Kubernetes
 			stage( "Clean Up Existing Deployments" ) {
