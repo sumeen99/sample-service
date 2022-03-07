@@ -80,6 +80,7 @@ podTemplate(
 
 			// Code Inspection
 			stage("Inspection Code") {
+			   steps {
 				 container("scanner") {
 				 	sh "sonar-scanner \
 				 		-Dsonar.projectName=sample \
@@ -93,7 +94,17 @@ podTemplate(
 				 		-Dsonar.host.url=http://169.56.71.185:32535/sonar \
 				 		-Dsonar.login=6a1db71e236ede9864c350dacac7e469d7a996db" 
 				 }
+				 
+				 def qualitygate = waitForQualityGate()
+				 
+				 if (qualitygate.status != "OK") {
+        			echo "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
+      			 } else {
+      			    echo "Pipeline succeed due to quality gate coverage success: ${qualitygate.status}"
+      			 }
+			  }
 			} 
+			
 			        
 			// Build Docker, Push Image to Docker Hub Repository.        
 			stage("Build Microservice image") {
