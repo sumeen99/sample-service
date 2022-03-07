@@ -60,7 +60,7 @@ podTemplate(
 
 		try {
 
-       			stageName = "Build maven project"
+       		stageName = "Build maven project"
 
 			// Build Source from Repository in gitlab
 			stage(stageName) {
@@ -122,8 +122,6 @@ podTemplate(
 						sh "podman push ${image}:dev"
 
 					}
-
-
 				}
 			}
                        
