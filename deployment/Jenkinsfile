@@ -9,7 +9,7 @@ def notifySlack(STATUS, COLOR) {
 /* ------------------------------ */
 
 
-notifySlack("STARTED", "#FFFF00")
+//notifySlack("STARTED", "#FFFF00")
 
 podTemplate(
 	label: label, 
@@ -80,7 +80,6 @@ podTemplate(
 
 			// Code Inspection
 			stage("Inspection Code") {
-			   steps {
 				 container("scanner") {
 				 	sh "sonar-scanner \
 				 		-Dsonar.projectName=sample \
@@ -102,7 +101,6 @@ podTemplate(
       			 } else {
       			    echo "Pipeline succeed due to quality gate coverage success: ${qualitygate.status}"
       			 }
-			  }
 			} 
 			
 			        
@@ -146,10 +144,10 @@ podTemplate(
 			}
             echo "**** FINISH ALL STAGES : SUCCESS"
             echo "**** notifySlack"
-            notifySlack("${currentBuild.currentResult}", "#00FF00")
+            //notifySlack("${currentBuild.currentResult}", "#00FF00")
 		} catch(e) {
 			currentBuild.result = "FAILED"
-			notifySlack("${currentBuild.currentResult}", "#FF0000")
+			//notifySlack("${currentBuild.currentResult}", "#FF0000")
 			//notifyMail("${currentBuild.currentResult}", "${email_recipients}")
 		}
 	}
