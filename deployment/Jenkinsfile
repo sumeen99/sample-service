@@ -93,19 +93,17 @@ podTemplate(
 				 		-Dsonar.host.url=http://169.56.71.185:32535/sonar \
 				 		-Dsonar.login=6a1db71e236ede9864c350dacac7e469d7a996db" 
 				 }
+				 
+				 timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
+    				def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
+    				if (qg.status != 'OK') {
+      					echo "Pipeline aborted due to quality gate failure: ${qg.status}"
+    				} else {
+    				    echo "Pipeline succeed due to quality gate failure: ${qg.status}"
+    				}
+  				}
 			} 
-			
-
-			stage("Quality Gate") {
-			   timeout(time: 1, unit: 'HOURS') {
-			      def qg = waitForQualityGate()
-				  if ('error'.equalsIgnoreCase(qg.status) ) {
-					    echo "Pipeline aborted due to quality gate failure: ${qg.status}"
-				  }  else {
-				  		echo "Pipeline succeed due to quality gate success: ${qg.status}"
-				  }
-			   }
-			}
+	
 			        
 			// Build Docker, Push Image to Docker Hub Repository.        
 			stage("Build Microservice image") {
