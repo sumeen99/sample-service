@@ -129,7 +129,7 @@ podTemplate(
 				container("kubectl") {
 					sh "kubectl apply -n ${namespace} -f ${config}"
 					sh "kubectl apply -n ${namespace} -f ${deployment}"
-					sh "sleep 5"
+					sh "sleep 10"
 					sh "kubectl apply -n ${namespace} -f ${service}"
 					sh "kubectl apply -n ${namespace} -f ${ingress}"
 				}
