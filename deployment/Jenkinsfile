@@ -97,12 +97,12 @@ podTemplate(
 
 			stage("Quality Gate"){
 			  timeout(time: 1, unit: 'MINUTES') {
-		              def qualitygate = waitForQualityGate()
-		              if (qualitygate.status != "OK") {
-		                 echo "quality gate coverage failure: ${qualitygate.status}"
-		              } else {
-		                 echo "quality gate coverage success: ${qualitygate.status}"
-		              }	
+	              def qualitygate = waitForQualityGate()
+	              if (qualitygate.status != "OK") {
+	                 echo "quality gate coverage failure: ${qualitygate.status}"
+	              } else {
+	                 echo "quality gate coverage success: ${qualitygate.status}"
+	              }	
 			  }
 			}
 			  	        
