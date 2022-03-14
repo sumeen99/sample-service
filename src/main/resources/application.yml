@@ -10,7 +10,7 @@ spring:
     
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB_SERVER:169.56.71.185}:${DB_PORT:30972}/${DB_NAME:demo}?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://${DB_SERVER:localhost}:${DB_PORT:3306}/${DB_NAME:demo}?useUnicode=true&characterEncoding=utf-8
     username: ${DB_USERNAME:user00}
     password: ${DB_PASSWORD:admin1234}
     hikari:
@@ -28,5 +28,5 @@ mybatis:
 
 garage:
   product:
-    server: ${PRODUCT_SERVER:169.56.174.133}
+    server: ${PRODUCT_SERVER:localhost}
     port: ${PRODUCT_PORT:8081}
