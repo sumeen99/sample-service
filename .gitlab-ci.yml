@@ -30,7 +30,6 @@ build-job:       # This job runs in the build stage, which runs first.
     - mvn package -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dmaven.test.skip=true
   after_script:
     - echo "build successfully"
-
   only:
     - msa
  
