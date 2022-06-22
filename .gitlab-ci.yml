@@ -20,6 +20,7 @@ cache:
 stages:          # List of stages for jobs, and their order of execution
   - build
   - test
+  - inspect
   - deploy
 
 build-job:       # This job runs in the build stage, which runs first.
@@ -57,7 +58,20 @@ lint-test-job:   # This job also runs in the test stage.
     - echo "No lint issues found." >> gitlab-ci.log
 
 deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+  stage: inspect  # It only runs when *both* jobs in the test stage complete successfully.
   script:
     - echo "Deploying application..." >> gitlab-ci.log
     - echo "Application successfully deployed." >> gitlab-ci.log
+
+docker-build:
+  image: docker:latest
+  stage: deploy
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker pull $CI_REGISTRY_IMAGE:latest || true
+    - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - docker push $CI_REGISTRY_IMAGE:latest    
