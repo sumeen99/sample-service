@@ -23,7 +23,7 @@ build-job:       # This job runs in the build stage, which runs first.
   script:
     - echo "Compiling the code..." > gitlab-ci.log
     - echo "Compile complete." >> gitlab-ci.log
-    - mvn clean install
+  
   after_script:
     - echo 'build success!'  
   tags:
