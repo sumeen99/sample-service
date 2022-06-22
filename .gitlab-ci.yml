@@ -34,8 +34,7 @@ build-job:       # This job runs in the build stage, which runs first.
     - $CI_PROJECT_DIR/.m2 
   only:
     - msa
-  tags:
-    - my-runner2
+ 
 
 
 unit-test-job:   # This job runs in the test stage.
