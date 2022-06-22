@@ -34,8 +34,9 @@ build-job:       # This job runs in the build stage, which runs first.
   after_script:
     - echo "build successfully"
   artifacts:
+    name: "Maven artifacts from $CI_PROJECT_NAME on $CI_COMMIT_REF_SLUG"
     paths:
-      - target/*.jar  
+      - "**/target"
   only:
     - msa
  
