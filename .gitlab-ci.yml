@@ -28,10 +28,11 @@ build-job:       # This job runs in the build stage, which runs first.
     - echo "Compiling the code..." > gitlab-ci.log
     - echo "Compile complete." >> gitlab-ci.log
     - mvn package -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dmaven.test.skip=true
-    
+    paths:
   after_script:
     - echo "build successfully"
-  
+  paths:
+    - $CI_PROJECT_DIR/.m2 
   only:
     - msa
   tags:
