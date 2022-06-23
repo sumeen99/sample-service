@@ -72,6 +72,6 @@ docker-build:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - docker pull $CI_REGISTRY_IMAGE:latest || true
-    - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest . -f deployment/Dockerfile
-    - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA $CI_REPOSITORY_NAME/$CI_REGISTRY_IMAGE:gitlab-ci 
+    - docker build -t $CI_REGISTRY_IMAGE:latest . -f deployment/Dockerfile
+    - docker tag $CI_REGISTRY_IMAGE:latest $CI_REPOSITORY_NAME/$CI_REGISTRY_IMAGE:gitlab-ci 
     - docker push $CI_REPOSITORY_NAME/$CI_REGISTRY_IMAGE:gitlab-ci   
