@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import java.net.InetAddress;
 
 import com.demo.microservices.dao.SampleUserDao;
 import com.demo.microservices.model.Hello;
@@ -68,6 +69,21 @@ public class HelloController {
 		
 		return new ResponseEntity<List<SampleUser>> (list, HttpStatus.OK);
 	}	
+
+	@ApiOperation(value="Welcome bootcamp")
+	@GetMapping(value="/")
+	public ResponseEntity <String> welcome() { 
+		String host = "";
+		try {
+		host = InetAddress.getLocalHost().getHostName();
+		}
+		catch (Exception e) {
+		e.printStackTrace();
+		}
+		String msg = "I am running on server "host" Version 1.0 \n";
+
+		return new ResponseEntity<String> (msg, HttpStatus.OK);
+	}
 	
 	@ApiOperation(value="사용자 정보 가져오기")
 	@GetMapping(value="/users/{userId}}")
