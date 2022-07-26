@@ -21,23 +21,44 @@ podTemplate(containers: [
 		
 
 		// Docker Hub Info.
-		def tag = "0.1.2"
-		def dockerRegistry = "https://index.docker.io/v1/"
-		def credentialRegistry="nexweb1"
-		def image = "nexweb1/sample"
+		//def tag = "0.1.2"
+		//def dockerRegistry = "https://index.docker.io/v1/"
+		//def credentialRegistry="nexweb1"
+		//def image = "nexweb1/sample"
 
 		// Base Directory
-		def baseDir = "./"
-		def baseDeployDir = "./"
+		//def baseDir = "./"
+		//def baseDeployDir = "./"
 
 		// Kubernetes
-		def deployment = "deployment/sample.yaml"
-		def config = "deployment/config.yaml"
-		def service ="deployment/service.yaml"
-		def ingress = "deployment/ingress.yaml"
-		def selector_key = "app"
-		def selector_val = "sample"
-		def namespace = "user00"
+		//def deployment = "deployment/sample.yaml"
+		//def config = "deployment/config.yaml"
+		//def service ="deployment/service.yaml"
+		//def ingress = "deployment/ingress.yaml"
+		//def selector_key = "app"
+		//def selector_val = "sample"
+		//def namespace = "user00"
+
+                def props = readProperties  file:"deployment/pipeline.properties"
+
+                // Docker Hub Info.
+                def tag = props["version"]
+                def dockerRegistry = props["dockerRegistry"]
+                def credentialRegistry=props["credentialRegistry"]
+                def image = props["image"]
+
+                // Base Directory
+                def baseDir = props["baseDir"]
+                def baseDeployDir = props["baseDeployDir"]
+
+                // Kubernetes
+                def deployment = props["deployment"]
+                def config = props["config"]
+                def service = props["service"]
+                def ingress = props["ingress"]
+                def selector_key = props["selector_key"]
+                def selector_val = props["selector_val"]
+                def namespace = props["namespace"]
 		
 		try {
 
