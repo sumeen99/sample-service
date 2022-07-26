@@ -80,7 +80,7 @@ public class HelloController {
 		catch (Exception e) {
 		e.printStackTrace();
 		}
-		String msg = "I am running on server "host" Version 1.0 \n";
+		String msg = "I am running on server " + host + " Version 1.0 \n";
 
 		return new ResponseEntity<String> (msg, HttpStatus.OK);
 	}
