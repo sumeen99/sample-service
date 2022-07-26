@@ -11,6 +11,9 @@ podTemplate(containers: [
 	]
   ) {
     node(POD_LABEL) {
+         options {
+    		timeout(time: 20, unit: 'MINUTES')
+  	}
         stage('Get a Maven project') {
             git url: 'https://gitlab.com/nexweb/sample-service.git', branch: 'msa'
         }
