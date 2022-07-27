@@ -54,7 +54,7 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-
+  ns: default
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
@@ -82,7 +82,7 @@ affinity: {}
 
 config:
   - name: "SERVLET_CONTEXT_PATH"
-    value: "/user00"
+    value: "/"
   - name: "DB_SERVER"
     value: "mysql.mysql"
   - name: "DB_USERNAME"
@@ -92,3 +92,14 @@ config:
   - name: "DB_PORT"
     value: "3306"
 
+env:
+  - name: DB_SERVER
+    value: DB_SERVER
+  - name: DB_PORT
+    value: DB_PORT
+  - name: DB_USERNAME
+    value: DB_USERNAME
+  - name: DB_PASSWORD
+    value: DB_PASSWORD
+  - name: SERVLET_CONTEXT_PATH
+    value: SERVLET_CONTEXT_PATH
