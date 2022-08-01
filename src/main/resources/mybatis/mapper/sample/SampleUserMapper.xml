@@ -53,7 +53,7 @@
 	</update>
 	
 	<delete id="deleteUser" parameterType="string">
-	    delete tb_user00 
+	    delete from tb_user00 
 	    where user_id = #{userId} 
 	</delete>		
 </mapper>
