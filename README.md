@@ -1,6 +1,2 @@
-hi
-hh
-ddd
-aaaa
-hello
-hello
+
+Welcome Spring boot and Spring Cloud hands-on
