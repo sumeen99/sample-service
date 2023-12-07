@@ -1,0 +1,32 @@
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: ${SERVLET_CONTEXT_PATH:/}
+    
+spring:
+  application:
+    name: sample-service
+    
+    
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://165.192.105.57:31001/member?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: P@ssw0rd$
+    hikari:
+      connection-timeout: 5000
+      validation-timeout: 1000
+      maximum-pool-size: 30
+      minimum-idle: 2
+      connection-test-query: SELECT 1
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    
+garage :
+  product:
+    server : ${PRODUCT_SERVER:169.56.100.110}
+    port : ${PRODUCT_PORT:8081}
+ 
